@@ -20,9 +20,8 @@ namespace TicTacToe
             //test the button
             TicTacToeButton tic_tac_toe_btn = new TicTacToeButton( );
             
-            //set the grid
-            //comment out this line to test git 
-            //setGrid( );
+            //set the grid            
+            setGrid( );
         }
 
         private void setGrid( )
