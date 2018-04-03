@@ -1,6 +1,7 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
+
+//Lydia's version
 
 namespace TicTacToeV3
 {
@@ -23,13 +24,13 @@ namespace TicTacToeV3
             //make space for the grid
             grid = new TicTacToeButton[ 3, 3 ];
             Point loc = new Point( 0, 0 );
-       
+
 
             //loop over the rows
-            for(int r = 0; r < 3; r++)
+            for (int r = 0; r < 3; r++)
             {
                 //loop over ea col in this row
-                for(int c = 0; c < 3; c++)
+                for (int c = 0; c < 3; c++)
                 {
                     //create the buttons and place them in the 2-d array
                     grid[ r, c ] = new TicTacToeButton( );
