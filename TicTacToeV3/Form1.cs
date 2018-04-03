@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 //Lydia's version
@@ -17,6 +18,24 @@ namespace TicTacToeV3
             InitializeComponent( );
             this.BackColor = Color.Black;
             setUpGrid( );
+        }
+
+        private void btn_click(object o, EventArgs e )
+        {
+            TicTacToeButton b = (TicTacToeButton)o;
+            if (xTurn)
+            {
+                b.BackColor = Color.Gold;
+                b.Text = "X";
+            }
+            else
+            {
+                b.BackColor = Color.Olive;
+                b.Text = "O";
+            }
+
+            xTurn = !xTurn;
+
         }
 
         public void setUpGrid( )
@@ -38,6 +57,8 @@ namespace TicTacToeV3
                     this.Controls.Add( grid[ r, c ] );
                     //set the location for this button
                     grid[ r, c ].Location = loc;
+                    //add the click event
+                    grid[ r, c ].Click += new EventHandler( btn_click );
                     loc.X += TicTacToeButton.Btn_Size;
                 }
 
@@ -46,7 +67,7 @@ namespace TicTacToeV3
 
             }
 
-            //place the buttons on the form in the correct position
+            
         }
     }
 }
