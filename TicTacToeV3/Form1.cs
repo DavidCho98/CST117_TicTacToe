@@ -18,6 +18,68 @@ namespace TicTacToeV3
             InitializeComponent( );
             this.BackColor = Color.Black;
             setUpGrid( );
+            
+        }
+
+        private void resetBoard( )
+        {
+            for (int r = 0; r < 3; r++)
+                for (int c = 0; c < 3; c++)
+                    grid[ r, c ].reset( );
+        }
+
+        private bool checkForWin( )
+        {
+            //main logic of the program
+            
+            if(grid[0,0].Text != "*")
+            {
+                //see if there is a horizontal win
+                if (grid[0,0].Text == grid[0,1].Text && grid[0,1].Text == grid[ 0, 2 ].Text)
+                {
+                    MessageBox.Show( grid[ 0, 0 ].Text + " wins!" );
+                    return true;
+                }
+                //see if there is a vertical win
+                if(grid[0,0].Text == grid[1,0].Text && grid[1,0].Text == grid[ 2, 0 ].Text)
+                {
+                    MessageBox.Show( grid[ 0, 0 ].Text +  " wins!" );
+                    return true;
+                }
+
+            }
+            if(grid[1,1].Text != "*")
+            {
+                //see if there is a horizontal win
+                if (grid[ 1, 0 ].Text == grid[ 1, 1 ].Text && grid[ 1, 1 ].Text == grid[ 1, 2 ].Text)
+                {
+                    MessageBox.Show( grid[ 1, 0 ].Text + " wins!"  );
+                    return true;
+                }
+                //see if there is a vertical win
+                if (grid[ 0,1 ].Text == grid[ 1, 1 ].Text && grid[ 1,1 ].Text == grid[ 2, 1 ].Text)
+                {
+                    MessageBox.Show( grid[ 1, 1 ].Text +  " wins!");
+                    return true;
+                }
+
+            }
+            if(grid[2,2].Text != "*")
+            {
+                //see if there is a horizontal win
+                if (grid[ 2, 0 ].Text == grid[ 2, 1 ].Text && grid[ 2, 1 ].Text == grid[ 2, 2 ].Text)
+                {
+                    MessageBox.Show( grid[ 2, 0 ].Text + " wins!" );
+                    return true;
+                }
+                //see if there is a vertical win
+                if (grid[ 0, 2 ].Text == grid[ 1, 2 ].Text && grid[ 1, 2 ].Text == grid[ 2, 2 ].Text)
+                {
+                    MessageBox.Show( grid[ 2,2 ].Text + " wins!");
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void btn_click(object o, EventArgs e )
@@ -35,6 +97,8 @@ namespace TicTacToeV3
             }
 
             xTurn = !xTurn;
+            if (checkForWin( ))
+                resetBoard( );
 
         }
 

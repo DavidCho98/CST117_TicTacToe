@@ -16,5 +16,13 @@ namespace TicTacToeV3
             this.FlatStyle = FlatStyle.Flat;
             this.Font = new System.Drawing.Font( "Consolas", 25 );
         }
+
+        public void reset( )
+        {
+            //reset the button to its original state
+            this.BackColor = System.Drawing.Color.LightGray;
+            this.Text = "*";
+
+        }
     }
 }
