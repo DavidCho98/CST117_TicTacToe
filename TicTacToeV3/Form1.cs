@@ -79,7 +79,37 @@ namespace TicTacToeV3
                     return true;
                 }
             }
+
+            //check diagonal win
+            if(grid[0,0].Text != "*" &&
+                (grid[0,0].Text == grid[1,1].Text && grid[1,1].Text == grid[ 2, 2 ].Text))
+            {
+                MessageBox.Show( grid[ 2, 2 ].Text + " wins!" );
+                return true;
+            }
+            if(grid[2,0].Text != "*" &&
+                (grid[ 2, 0 ].Text == grid[ 1, 1 ].Text && grid[ 1, 1 ].Text == grid[ 0, 2 ].Text))
+            {
+                MessageBox.Show( grid[ 2, 0 ].Text + " wins!" );
+                return true;
+            }
             return false;
+        }
+
+        private bool checkForDraw( )
+        {
+            if (checkForWin( )) return false;
+
+            for (int r = 0; r < 3; r++)
+            {
+                for (int c = 0; c < 3; c++)
+                {
+                    if (grid[ r, c ].Text == "*")
+                        return false;
+                }
+            }
+            MessageBox.Show( "It's a draw!" );
+            return true;
         }
 
         private void btn_click(object o, EventArgs e )
@@ -92,12 +122,12 @@ namespace TicTacToeV3
             }
             else
             {
-                b.BackColor = Color.Olive;
+                b.BackColor = Color.Crimson;
                 b.Text = "O";
             }
 
             xTurn = !xTurn;
-            if (checkForWin( ))
+            if (checkForWin( ) || checkForDraw())
                 resetBoard( );
 
         }
